@@ -15,7 +15,6 @@ sudoku::sudoku()
                         areaCount[i+1][j] = 9;
                         }
         }
-
 }
 
 bool sudoku::setNum(int row, int col, int num)
