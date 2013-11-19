@@ -8,7 +8,7 @@ class units
 {
 public:
         units();
-        bool deleteNum(int num);
+        bool deleteNum(int num); 
         bool textEnableNum1();
         bool findNum(int num); 
         int findToPush(); 
