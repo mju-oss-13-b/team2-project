@@ -31,14 +31,14 @@ bool sudoku::setNum(int row, int col, int num)
         else
                 final[row][col] = num;
         
-        rowCount[num][row] = 0; // 对该数的行列区的计数置为0
+        rowCount[num][row] = 0; 
         colCount[num][col] = 0;
         areaCount[num][row/3 *3+col/3] = 0;
         u[row][col].clearEnableNum();
         for(int i=0; i<9; i++)
         {
 
-                disEnable(row, col, i+1); // 删除该单元上所有可填的数
+                disEnable(row, col, i+1); 
         }
         for(int i=0; i<9; i++)
         {
@@ -46,17 +46,15 @@ bool sudoku::setNum(int row, int col, int num)
                 disEnable(i, col, num);
                 disEnable(row/3 *3+i/3 , col/3 *3+i%3, num);
         }
-    //this->print();
-        //cout<<endl;
         return true;
 
 }
 
-bool sudoku::disEnable(int row, int col, int num) // 删除一个unit内可填的某个数的操作
+bool sudoku::disEnable(int row, int col, int num) 
 {
         if(u[row][col].deleteNum(num))
         {
-                if(rowCount[num][row]!=0) // 一个可填数少掉时对行列区的Count操作
+                if(rowCount[num][row]!=0) 
                 {
                         rowCount[num][row]--;
                         testRowCount(num, row);
@@ -220,7 +218,7 @@ bool sudoku::isProgramOver()
         return true;
 }
 
-bool sudoku::trial( int ID ) // 尝试
+bool sudoku::trial( int ID ) 
 {
         int id = ID;
         int remainder = 2;
