@@ -8,7 +8,7 @@ class sudoku
 public:
         sudoku();
         bool setNum(int row, int col, int num);
-    bool disEnable(int row, int col, int num);
+        bool disEnable(int row, int col, int num);
         void textCount();
         void testRowCount(int num, int row);
         void testColCount(int num, int col);
