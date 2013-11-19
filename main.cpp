@@ -36,7 +36,6 @@ int main()
                         }
                 };
         o.setAdd();
-        o = trial(o);
         o.print();
 }
 
