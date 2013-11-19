@@ -40,7 +40,6 @@ int main()
         o.setAdd();
         o = trial(o);
         o.print();
-
 }
 
 sudoku trial(sudoku o)
