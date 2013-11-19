@@ -32,9 +32,7 @@ int main()
                                 if(!o.setNum(i, j, original[i][j]))
                                 {
                                         cout<<"Wrong Exercise!!"<<endl;
-                    return 0;
                                 }
-                                
                         }
                 };
         o.setAdd();
