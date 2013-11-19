@@ -38,20 +38,6 @@ int main()
                         }
                 };
         o.setAdd();
-        
-        /*while(!o.isProgramOver())
-        {
-                sudoku tr1 = o;
-sudoku tr2 = o;
-                bool t1 = tr1.trial(1);
-                bool t2 = tr2.trial(2);
-                if(t1&&!t2)
-                        o = tr1;
-                else if(t2&&!t1)
-                                o = tr2;
-                else
-                        o = tr1;
-        }*/
         o = trial(o);
         o.print();
 
@@ -61,9 +47,8 @@ sudoku trial(sudoku o)
 {
         if(o.isProgramOver())
         {
-                //        return o;
                 o.print();
-        exit(0); // 假如使用return的话, 会使程序把剩余递归使用掉的...
+        exit(0); 
         }
         sudoku tr1 = o;
         sudoku tr2 = o;
