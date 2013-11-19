@@ -30,7 +30,6 @@ int units::findToPush()
         return 0;
 }
 
-
 bool units::textEnableNum1()
 {
         return (enableNum == 1);
