@@ -1,4 +1,4 @@
-nclude"sudoku.h"
+#include"sudoku.h"
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
