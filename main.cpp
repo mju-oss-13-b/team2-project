@@ -36,33 +36,6 @@ int main()
                         }
                 };
         o.setAdd();
-        o = trial(o);
+
         o.print();
-}
-
-
-
-sudoku trial(sudoku o)
-{
-        if(o.isProgramOver())
-        {
-                o.print();
-        exit(0);      
-        }
-        sudoku tr1 = o;
-        sudoku tr2 = o;
-        bool t1 = tr1.trial(1);
-        bool t2 = tr2.trial(2);
-        if(t1&&!t2)
-                return trial(tr1);
-        else if(t2&&!t1)
-                return trial(tr2);
-        else if(!t1&&!t2)
-                return o;
-        else if(trial(tr1).isProgramOver())
-                return trial(tr1);
-        else if(trial(tr2).isProgramOver())
-                return trial(tr2);
-        else 
-                return o;
 }
