@@ -3,11 +3,13 @@
 #include <cstdio>
 #include <cstdlib>
 
+
 sudoku trial(sudoku o);
+
 int main()
 {
         sudoku o;
-        int original[9][9] =
+        int original[9][9] = 
         {{0,0,2,0,6,0,4,0,0},
          {0,0,0,0,0,3,0,0,5},
          {0,1,0,0,7,0,3,0,0},
@@ -18,11 +20,13 @@ int main()
          {6,0,0,0,8,0,0,0,0},
          {0,5,0,1,0,0,2,0,0}};
     freopen("sudoku.in","r",stdin);
+
     for(int i=0;i<9;i++)
         for(int j=0;j<9;j++)
         {
             scanf("%d",& original[i][j]);
         }
+
         for(int i=0; i<9; i++)
                 for(int j=0; j<9; j++)
                 {
@@ -33,9 +37,14 @@ int main()
                                 {
                                         cout<<"Wrong Exercise!!"<<endl;
                                 }
+                                
                         }
                 };
+
         o.setAdd();
 
         o.print();
+
+
 }
+
