@@ -2,6 +2,9 @@
 
 
 
+
+
+
 sudoku::sudoku()
 {
         for(int i=0; i<9; i++)
@@ -15,27 +18,68 @@ sudoku::sudoku()
                         areaCount[i+1][j] = 9;
                         }
         }
+
+
 }
+
+
+void sudoku::gotoxy(int x, int y){
+	COORD Pos;
+	Pos.X=x;
+	Pos.Y=y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Pos);
+}
+
+void sudoku::print_main(){
+
+	cout<<"==============================================          "<<endl;
+	cout<<"	             sudoku       "<<endl;   
+    cout<<"=============================================="<<endl;
+	cout<<" ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ "<<endl;
+    cout<<"│                                 "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ"<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+    cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+	cout<<" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ "<<endl;
+	cout<<"│                                  "<<endl;
+    cout<<" ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣ "<<endl;
+
+}
+
 
 bool sudoku::setNum(int row, int col, int num)
 {
-        int q = final[row][col];
-        ;
+       // int q = final[row][col];
         if(final[row][col]!=0 && final[row][col]==num)
                 return true;
         else if(final[row][col] != 0)
                 return false;
         else if(rowCount[num][row]==0 || colCount[num][col]==0 || areaCount[num][row/3 *3+col/3] == 0)
                 return false;
-        else
+        else 
                 final[row][col] = num;
-        
-        rowCount[num][row] = 0; 
+
+
+        rowCount[num][row] = 0;     
         colCount[num][col] = 0;
         areaCount[num][row/3 *3+col/3] = 0;
+
+
         u[row][col].clearEnableNum();
-        for(int i=0; i<9; i++)
+        for(int i=0; i<9; i++)     
         {
+
 
                 disEnable(row, col, i+1); 
         }
@@ -45,17 +89,20 @@ bool sudoku::setNum(int row, int col, int num)
                 disEnable(i, col, num);
                 disEnable(row/3 *3+i/3 , col/3 *3+i%3, num);
         }
+
         return true;
 
+
 }
+
 
 bool sudoku::disEnable(int row, int col, int num) 
 {
         if(u[row][col].deleteNum(num))
         {
-                if(rowCount[num][row]!=0) 
+                if(rowCount[num][row]!=0)        
                 {
-                        rowCount[num][row]--;
+                        rowCount[num][row]--; 
                         testRowCount(num, row);
                 }
                 if(colCount[num][col]!=0)
@@ -76,6 +123,7 @@ bool sudoku::disEnable(int row, int col, int num)
                 return false;
         
 }
+
 
 void sudoku::testRowCount(int num, int row)
 {
@@ -117,6 +165,7 @@ void sudoku::testRowCount(int num, int row)
         }
 }
 
+
 void sudoku::testColCount(int num, int col)
 {
         if(colCount[num][col] == 1)
@@ -157,6 +206,7 @@ void sudoku::testColCount(int num, int col)
         }
 }
 
+
 void sudoku::testAreaCount(int num, int area)
 {
         if(areaCount[num][area] == 1)
@@ -174,6 +224,7 @@ void sudoku::testAreaCount(int num, int area)
         }
 }
 
+
 void sudoku::setAdd()
 {
         list<waitUnit>::iterator first = add.begin();
@@ -183,6 +234,7 @@ void sudoku::setAdd()
                         first++;
         }
 }
+
 
 bool sudoku::trySetAdd()
 {
@@ -196,15 +248,53 @@ bool sudoku::trySetAdd()
         return true;
 }
 
+
 void sudoku::print()
 {
+	
+	for(int i=0; i<9; i++)
+        {
+			for(int j=0; j<9; j++){
+				if(final[i][j] == 1){ final[i][j] = 97;}
+				else if(final[i][j] == 2){ final[i][j] = 98;}
+				else if(final[i][j] == 3){ final[i][j] = 99;}
+				else if(final[i][j] == 4){ final[i][j] = 100;}
+				else if(final[i][j] == 5){ final[i][j] = 101;}
+				else if(final[i][j] == 6){ final[i][j] = 102;}
+				else if(final[i][j] == 7){ final[i][j] = 103;}
+				else if(final[i][j] == 8){ final[i][j] = 104;}
+				else if(final[i][j] == 9){ final[i][j] = 105;}
+			}
+	}
+
+	gotoxy(0,0); print_main();
+	gotoxy(0,4);
         for(int i=0; i<9; i++)
         {
                 for(int j=0; j<9; j++)
-                        cout<<final[i][j]<<' ';
-                cout<<endl;
+                        printf("   %c ", final[i][j]);
+				cout<<endl;
+				cout<<endl;
+         
         }
+		cout<<endl;
+
+		int i=4;
+		while(i<21){
+			int j=0;
+			while(j<48){
+				
+				gotoxy(j,i); cout<<"|";
+				j+=5;
+			}
+			i++;
+		}
+
+		cout<<endl;
+
+		cout<<endl;
 }
+
 
 bool sudoku::isProgramOver()
 {
@@ -216,3 +306,4 @@ bool sudoku::isProgramOver()
                 };
         return true;
 }
+
