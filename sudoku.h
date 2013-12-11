@@ -17,7 +17,6 @@ public:
         void setAdd();
         bool trySetAdd();
         bool isProgramOver();
-        bool trial( int id );
 private:
         int final[9][9];
         int rowCount[10][9];
